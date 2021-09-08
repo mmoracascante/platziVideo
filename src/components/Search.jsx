@@ -12,6 +12,7 @@ const Search = ({ isHome, searchItem }) => {
   });
 
   const handleInput = (e) => {
+    //console.log(e.target.value);
     searchItem(e.target.value);
   };
 
@@ -29,14 +30,8 @@ const Search = ({ isHome, searchItem }) => {
   );
 };
 
-const mapStateToPros = (state) => {
-  return {
-    search: state.search,
-  };
-};
-
 const mapDispatchToPros = {
   searchItem,
 };
 
-export default connect(mapStateToPros, mapDispatchToPros)(Search);
+export default connect(null, mapDispatchToPros)(Search);
