@@ -9,12 +9,12 @@ import Header from '../components/Header';
 
 import '../assets/styles/App.scss';
 
-const Home = ({ myList, trends, originals }) => {
+const Home = ({ myList, trends, originals, search }) => {
 
   return (
     <>
       <Header />
-      <Search isHome />
+      <Search isHome onChange />
       {myList.length > 0 ? (
         <Categories title='Mi lista'>
           <Carousel>
@@ -26,6 +26,18 @@ const Home = ({ myList, trends, originals }) => {
           </Carousel>
         </Categories>
       ) : null}
+
+      {search.length > 0 && (
+        <Categories title='Busqueda'>
+          <Carousel>
+            {
+              search.map((item) => (
+                <CarouselItem key={item.id} {...item} />
+              ))
+            }
+          </Carousel>
+        </Categories>
+      )}
 
       <Categories title='Originales de Platzi'>
         <Carousel>
@@ -55,6 +67,7 @@ const mapStateToProps = (state) => {
     myList: state.myList,
     trends: state.trends,
     originals: state.originals,
+    search: state.search,
   };
 };
 
