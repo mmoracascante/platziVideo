@@ -44,7 +44,7 @@ const reducer = (state, action) => {
       const list = [...state.trends, ...state.originals];
       return {
         ...state,
-        search: list.filter((item) => item.title.toLowerCase().includes(action.payload.title.toLowerCase())),
+        search: list.filter((item) => item.title.toLowerCase().includes(action.payload.toLowerCase())),
       };
     };
     default:
